@@ -55,15 +55,15 @@ myApp.service('dataClient',function(client){
       return streamingClient.search({
         type: 'city',
         body: {
-          query : {
-            match_all : {}
-          },
           filter : {
             geo_distance : {
               distance : "2000km",
               location : [lat,lng]
             }
-          }
+          },
+          sort: [
+            { _score :   { order : "desc" }}
+          ]
         }
       });
     }
