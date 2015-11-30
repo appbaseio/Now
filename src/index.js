@@ -157,22 +157,13 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
      streamedCheckin.push(arr);
      renderarray.push(arr);
      $scope.places = renderarray;
-     if(streamedCheckin.length<3){
-       $scope.color = 'rgb(255, 92, 92)';
-       $scope.checkinfrequency = streamedCheckin.length;
-       $scope.freqtext = 'Check-ins are not livestreamed. Search for a city or zoom in the map to see past check-ins';
-       $scope.freqclass = '';
-     }else if(streamedCheckin.length>=3 && streamedCheckin.length<10){
-       $scope.color = 'rgb(255, 153, 51)';
-       $scope.checkinfrequency = streamedCheckin.length;
-       $scope.freqtext = 'Check-ins are livestreamed. You can also search for a city or zoom in the map to see past check-ins';
-       $scope.freqclass = 'active';
-     }else if(streamedCheckin.length>=10){
-       $scope.color = 'rgb(51, 204, 51)';
-       $scope.checkinfrequency = streamedCheckin.length;
-       $scope.freqtext = 'Check-ins are livestreamed. You can also search for a city or zoom in the map to see past check-ins';
-       $scope.freqclass = 'active';
-     }
+     
+      $scope.streamStatus = helper.getStatus(streamedCheckin.length);
+      $scope.checkinfrequency = $scope.streamStatus.checkinfrequency;
+      $scope.color = $scope.streamStatus.color;
+      $scope.freqtext = $scope.streamStatus.freqtext;
+      $scope.freqclass = $scope.streamStatus.freqclass;
+    
      $scope.$apply();
    }
  }
@@ -275,22 +266,13 @@ var removecheckin = function (){
     }
       $scope.places = renderarray;
    }
-   if(streamedCheckin.length<3){
-        $scope.checkinfrequency=streamedCheckin.length;
-        $scope.color = 'rgb(255, 92, 92)';
-        $scope.freqtext = 'Check-ins are not livestreamed. Search for a city or zoom in the map to see past check-ins';
-        $scope.freqclass = '';
-   }else if(streamedCheckin.length>=3 && streamedCheckin.length<10){
-        $scope.checkinfrequency=streamedCheckin.length;
-        $scope.color = 'rgb(255, 153, 51)';
-        $scope.freqtext = 'Check-ins are livestreamed. You can also search for a city or zoom in the map to see past check-ins';
-        $scope.freqclass = 'active';
-   }else if(streamedCheckin.length>=10){
-        $scope.checkinfrequency=streamedCheckin.length;
-        $scope.color = 'rgb(51, 204, 51)';
-        $scope.freqtext = 'Check-ins are livestreamed. You can also search for a city or zoom in the map to see past check-ins';
-        $scope.freqclass = 'active';
-   }
+
+    $scope.streamStatus = helper.getStatus(streamedCheckin.length);
+    $scope.checkinfrequency = $scope.streamStatus.checkinfrequency;
+    $scope.color = $scope.streamStatus.color;
+    $scope.freqtext = $scope.streamStatus.freqtext;
+    $scope.freqclass = $scope.streamStatus.freqclass;
+
       $scope.$digest();
       $scope.$apply();
   }

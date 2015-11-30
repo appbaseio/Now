@@ -2,7 +2,8 @@ var app =  angular.module('myApp');
 app.factory('helper',function(){
   return {
     getCenter:getCenter,
-    getMapArray:getMapArray
+    getMapArray:getMapArray,
+    getStatus:getStatus
   };
 
   function getCenter(zoomIndex, data){
@@ -68,5 +69,26 @@ app.factory('helper',function(){
         current_hit._source.username
       ];
       return arr;
+  }
+
+  function getStatus(checkinLength){
+    var obj = {};
+    if(checkinLength<3){
+        obj.checkinfrequency=checkinLength;
+        obj.color = 'rgb(255, 92, 92)';
+        obj.freqtext = 'Check-ins are not livestreamed. Search for a city or zoom in the map to see past check-ins';
+        obj.freqclass = '';
+   }else if(checkinLength>=3 && checkinLength<10){
+        obj.checkinfrequency=checkinLength;
+        obj.color = 'rgb(255, 153, 51)';
+        obj.freqtext = 'Check-ins are livestreamed. You can also search for a city or zoom in the map to see past check-ins';
+        obj.freqclass = 'active';
+   }else if(checkinLength>=10){
+        obj.checkinfrequency=checkinLength;
+        obj.color = 'rgb(51, 204, 51)';
+        obj.freqtext = 'Check-ins are livestreamed. You can also search for a city or zoom in the map to see past check-ins';
+        obj.freqclass = 'active';
+   }
+   return obj;
   }
 });
