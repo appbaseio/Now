@@ -1,4 +1,5 @@
-myApp.service('dataClient',function(client){
+var app =  angular.module('myApp');
+app.service('dataClient',function(client){
 
     var streamingClient = new Appbase({
        url: 'https://scalr.api.appbase.io',
