@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp', ['elasticsearch','ngMap']);
 
-myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $interval, $window, $document) {
+myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $interval, $window, $document, helper) {
 
   var places = [],
       renderarray = [],
@@ -41,59 +41,12 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
    if(visible){
       infowindow = new google.maps.InfoWindow();
       infowindow.setContent('<table id="infowindow"><tr><td>' + '<img src="'+ data[6] +'">' + '</td>' + '<td>' + '<b>'+ data[8] + ' says ' +'</b>' + data[0] + '<br><b>Place : </b>' + data[7] + '<br><tr><a href="https://'+data[5]+'"'+'target="'+'_blank'+'">Visit this CheckIn</a></tr></td></tr>'+'</table>');
-      var center;
-      switch($scope.mapobj.getZoom()){
-        case 2:
-               center = new google.maps.LatLng(data[1]+9.6,data[2]-2.3);
-               break;
-        case 3:
-               center = new google.maps.LatLng(data[1]+4.8,data[2]-1.7);
-               break;
-        case 4:
-               center = new google.maps.LatLng(data[1]+2.4,data[2]-1.1);
-               break;
-        case 5:
-               center = new google.maps.LatLng(data[1]+1.2,data[2]-0.5);
-               break;
-        case 6:
-               center = new google.maps.LatLng(data[1]+0.6,data[2]-0.14);
-               break;
-        case 7:
-               center = new google.maps.LatLng(data[1]+0.3,data[2]-0.09);
-               break;
-        case 8:
-               center = new google.maps.LatLng(data[1]+0.15,data[2]-0.036);
-               break;
-        case 9:
-               center = new google.maps.LatLng(data[1]+0.07,data[2]-0.02);
-               break;
-        case 10:
-               center = new google.maps.LatLng(data[1]+0.04,data[2]-0.009);
-               break;
-        case 11:
-               center = new google.maps.LatLng(data[1]+0.02,data[2]-0.005);
-               break;
-        case 12:
-               center = new google.maps.LatLng(data[1]+0.01,data[2]-0.004);
-               break;
-        case 13:
-               center = new google.maps.LatLng(data[1]+0.005,data[2]-0.0009);
-               break;
-        case 14:
-               center = new google.maps.LatLng(data[1]+0.0025,data[2]-0.0005);
-               break;
-        case 15:
-               center = new google.maps.LatLng(data[1]+0.0012,data[2]-0.00027);
-               break;
-      }
+      var center = helper.getCenter($scope.mapobj.getZoom());
       infowindow.setPosition(center);
       infowindow.setZIndex(2);
       infowindow.open($scope.mapobj);
-      infowindowarray[index] = [];
-      infowindowarray[index][0] = infowindow;
-      infowindowarray[index][1] = data[1];
-      infowindowarray[index][2] = data[2];
-      infowindowarray[index][3] = new Date().getTime()/1000;
+      var current_date = new Date().getTime()/1000;
+      infowindowarray[index] = [infowindow, data[1], data[2], current_date];
       index++;
     }
  };
