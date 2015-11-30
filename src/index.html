@@ -39,8 +39,9 @@
         <div class="container-fluid" id="bodycontainer">
 
         <div class="row">
-          <div class="col-sm-2">
-            <div id="freqbar" ng-model="checkinfrequency" style="height:40px;background-color:{{color}}"><label id="freqlabel" data-toggle="popover" title="Livestream {{freqclass}}" data-content={{freqtext}}><i class="fa {{freqclass}}"></i></label></div>
+            <div id="freqbar" ng-model="checkinfrequency" style="background-color:{{color}}"
+             data-toggle="popover" title="Livestream {{freqclass}}" data-content={{freqtext}}>
+              <div class="spinner {{freqclass}}"></div>
           </div>
         </div>
         <div class="row">

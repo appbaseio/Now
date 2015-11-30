@@ -215,17 +215,17 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
        $scope.color = 'rgb(255, 92, 92)';
        $scope.checkinfrequency = streamedCheckin.length;
        $scope.freqtext = 'Check-ins are not livestreamed. Search for a city or zoom in the map to see past check-ins';
-       $scope.freqclass = 'fa-pause';
+       $scope.freqclass = '';
      }else if(streamedCheckin.length>=3 && streamedCheckin.length<10){
        $scope.color = 'rgb(255, 153, 51)';
        $scope.checkinfrequency = streamedCheckin.length;
        $scope.freqtext = 'Check-ins are livestreamed. You can also search for a city or zoom in the map to see past check-ins';
-       $scope.freqclass = 'fa-play';
+       $scope.freqclass = 'active';
      }else if(streamedCheckin.length>=10){
        $scope.color = 'rgb(51, 204, 51)';
        $scope.checkinfrequency = streamedCheckin.length;
        $scope.freqtext = 'Check-ins are livestreamed. You can also search for a city or zoom in the map to see past check-ins';
-       $scope.freqclass = 'fa-play';
+       $scope.freqclass = 'active';
      }
      $scope.$apply();
    }
@@ -338,17 +338,17 @@ var removecheckin = function (){
         $scope.checkinfrequency=streamedCheckin.length;
         $scope.color = 'rgb(255, 92, 92)';
         $scope.freqtext = 'Check-ins are not livestreamed. Search for a city or zoom in the map to see past check-ins';
-        $scope.freqclass = 'fa-pause';
+        $scope.freqclass = '';
    }else if(streamedCheckin.length>=3 && streamedCheckin.length<10){
         $scope.checkinfrequency=streamedCheckin.length;
         $scope.color = 'rgb(255, 153, 51)';
         $scope.freqtext = 'Check-ins are livestreamed. You can also search for a city or zoom in the map to see past check-ins';
-        $scope.freqclass = 'fa-play';
+        $scope.freqclass = 'active';
    }else if(streamedCheckin.length>=10){
         $scope.checkinfrequency=streamedCheckin.length;
         $scope.color = 'rgb(51, 204, 51)';
         $scope.freqtext = 'Check-ins are livestreamed. You can also search for a city or zoom in the map to see past check-ins';
-        $scope.freqclass = 'fa-play';
+        $scope.freqclass = 'active';
    }
       $scope.$digest();
       $scope.$apply();

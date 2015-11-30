@@ -49,6 +49,9 @@ map{
   font-size: 25px;
   color: white;
   font-weight: bold;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
 }
 .scrollbar{
 	margin-left: 30px;
@@ -155,4 +158,36 @@ map{
 }
 #inlineimage{
   border-width: 3px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  background-color: rgba(0,0,0,0.20);
+  border-radius: 100%;  
+}
+.spinner.active{
+  background-color: #333;
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% { -webkit-transform: scale(0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
 }
