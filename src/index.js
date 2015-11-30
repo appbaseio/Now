@@ -11,6 +11,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
       infowindowarray= [],
       citysearched,
       index = 0,
+      current_date = new Date().getTime()/1000;
       geocoder = new google.maps.Geocoder(),           //variable for geocoding
       infowindow = new google.maps.InfoWindow();      //variable for map infowindow
 
@@ -41,7 +42,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
    if(visible){
       infowindow = new google.maps.InfoWindow();
       infowindow.setContent('<table id="infowindow"><tr><td>' + '<img src="'+ data[6] +'">' + '</td>' + '<td>' + '<b>'+ data[8] + ' says ' +'</b>' + data[0] + '<br><b>Place : </b>' + data[7] + '<br><tr><a href="https://'+data[5]+'"'+'target="'+'_blank'+'">Visit this CheckIn</a></tr></td></tr>'+'</table>');
-      var center = helper.getCenter($scope.mapobj.getZoom());
+      var center = helper.getCenter($scope.mapobj.getZoom(), data);
       infowindow.setPosition(center);
       infowindow.setZIndex(2);
       infowindow.open($scope.mapobj);
@@ -96,24 +97,21 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
     if($scope.searchtext!=null && $scope.searchtext.replace(/\s/g,'').length){
       $scope.categoriesbox = true;
       if(response.hits){
-         for(var i=0;i<response.hits.hits.length;i++){
-           if(response.hits.hits[i]._source.category && response.hits.hits[i]._source.latitude && response.hits.hits[i]._source.longitude && response.hits.hits[i]._source.category){
-             categoryarray[response.hits.hits[i]._source.category] = true;
-             var arr = [];                 //creating array to publish details on map
-             arr[0] = response.hits.hits[i]._source.shout;
-             arr[1] = response.hits.hits[i]._source.latitude;
-             arr[2] = response.hits.hits[i]._source.longitude;
-             arr[3] = 1;
-             arr[4] = response.hits.hits[i]._source.category;
-             arr[5] = response.hits.hits[i]._source.url;
-             arr[6] = response.hits.hits[i]._source.photourl;
-             arr[7] = response.hits.hits[i]._source.venue;
-             arr[8] = response.hits.hits[i]._source.username;
-             arr[9] = 'red_marker.png';
-             arr[10] = new Date().getTime()/1000;
+        var hit_length = response.hits.hits.length;
+          var current_date =  new Date().getTime()/1000;
+           for(var i=0;i<hit_length;i++){
+            var current_hit = response.hits.hits[i];
+            if (current_hit._source.category && current_hit._source.latitude && current_hit._source.longitude && current_hit._source.category) {
+              categoryarray[current_hit._source.category] = true;
+              var default_arr = helper.getMapArray(current_hit);
+              var specific_arr = [
+                'red_marker.png',
+                current_date
+              ];
+              var arr = default_arr.concat(specific_arr);
               searchedCheckinarray.push(arr);
-           }
-         }
+            }
+          }
        }
        //GeoCoding to search the city
        geocoder.geocode( { "address": $scope.searchtext }, function(results, status) {
@@ -148,19 +146,14 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
 
  function streamProcess(response){
    if(response._source.latitude!=null && response._source.longitude!=null){
-     var arr = [];                 //creating array to publish details on map
-     arr[0] = response._source.shout;
-     arr[1] = response._source.latitude;
-     arr[2] = response._source.longitude;
-     arr[3] = 1;
-     arr[4] = response._source.category;
-     arr[5] = response._source.url;
-     arr[6] = response._source.photourl;
-     arr[7] = response._source.venue;
-     arr[8] = response._source.username;
-     arr[9] = 'blue_marker.png';
-     arr[10] = response._source.city;
-     arr[11] = new Date().getTime()/1000;
+    var default_arr = helper.getMapArray(response);
+    var specific_arr = [
+      'blue_marker.png',
+      response._source.city,
+      current_date 
+    ];
+    var arr = default_arr.concat(specific_arr);
+    
      streamedCheckin.push(arr);
      renderarray.push(arr);
      $scope.places = renderarray;
@@ -209,17 +202,12 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
            if(response.hits.hits[i]._source.latitude && response.hits.hits[i]._source.longitude){
              if(citysearched==response.hits.hits[i]._source.city)
              continue;
-             var arr = [];                 //creating array to publish details on map
-             arr[0] = response.hits.hits[i]._source.shout;
-             arr[1] = response.hits.hits[i]._source.latitude;
-             arr[2] = response.hits.hits[i]._source.longitude;
-             arr[3] = 1;
-             arr[4] = response.hits.hits[i]._source.category;
-             arr[5] = response.hits.hits[i]._source.url;
-             arr[6] = response.hits.hits[i]._source.photourl;
-             arr[7] = response.hits.hits[i]._source.venue;
-             arr[8] = response.hits.hits[i]._source.username;
-             arr[9] = 'orange_marker.png';
+            var default_arr = helper.getMapArray(response);
+            var specific_arr = [
+              'orange_marker.png'
+            ];
+            var arr = default_arr.concat(specific_arr);
+
              draggedCheckin.push(arr);
            }
          }

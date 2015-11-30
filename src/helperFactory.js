@@ -1,10 +1,11 @@
 var app =  angular.module('myApp');
 app.factory('helper',function(){
   return {
-    getCenter:getCenter
+    getCenter:getCenter,
+    getMapArray:getMapArray
   };
 
-  function getCenter(zoomIndex){
+  function getCenter(zoomIndex, data){
     var center;
     switch(zoomIndex){
         case 2:
@@ -53,4 +54,19 @@ app.factory('helper',function(){
     return center;  
   }
 
+  function getMapArray(current_hit){
+    var arr =
+      [
+        current_hit._source.shout,
+        current_hit._source.latitude,
+        current_hit._source.longitude,
+        1,
+        current_hit._source.category,
+        current_hit._source.url,
+        current_hit._source.photourl,
+        current_hit._source.venue,
+        current_hit._source.username
+      ];
+      return arr;
+  }
 });
