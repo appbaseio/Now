@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp', ['elasticsearch','ngMap']);
 
-myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $interval, $window, $document, helper) {
+myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $interval, $window, $document, helper, $timeout) {
 
   var places = [],
       renderarray = [],
@@ -26,7 +26,8 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
       $scope.checkinfrequency = "Count";
       $scope.freqtext = "";
       $scope.freqclass = "";
-      $scope.$apply();
+      //No need $apply_solve
+      //$scope.$apply();
   };
 
   $scope.opencheckin = function(event,details){
@@ -58,8 +59,11 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
           if($scope.searchtext!=null && $scope.searchtext.replace(/\s/g,'').length){  //to check if search text is null
               var suggestClient = dataClient.getSuggestions($scope.searchtext);
               suggestClient.on('data',function (resp) {
-                $scope.row = true;
-                $scope.suggestions = resp.suggest.mysuggester[0].options;
+                //$apply_solve
+                $timeout(function(){
+                  $scope.row = true;
+                  $scope.suggestions = resp.suggest.mysuggester[0].options;
+                },0);
               }).on('error',function (err) {
                   console.trace(err.message);
               });
@@ -86,7 +90,8 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
         places = [];
         citysearched = angular.lowercase($scope.searchtext);
         $scope.row = false;    //to hide suggestions
-        $scope.$apply();
+        //No need $apply_solve
+        //$scope.$apply();
         searchProcess(res);  //to fetch the data and to mark it on map
       }).on('error', function(err) {
         console.log("caught a stream error", err);
@@ -103,7 +108,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
             var current_hit = response.hits.hits[i];
             if (current_hit._source.category && current_hit._source.latitude && current_hit._source.longitude && current_hit._source.category) {
               categoryarray[current_hit._source.category] = true;
-              var default_arr = helper.getMapArray(current_hit);
+              var default_arr = helper.getMapArray(current_hit._source);
               var specific_arr = [
                 'red_marker.png',
                 current_date
@@ -146,7 +151,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
 
  function streamProcess(response){
    if(response._source.latitude!=null && response._source.longitude!=null){
-    var default_arr = helper.getMapArray(response);
+    var default_arr = helper.getMapArray(response._source);
     var specific_arr = [
       'blue_marker.png',
       response._source.city,
@@ -193,7 +198,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
            if(response.hits.hits[i]._source.latitude && response.hits.hits[i]._source.longitude){
              if(citysearched==response.hits.hits[i]._source.city)
              continue;
-            var default_arr = helper.getMapArray(response);
+            var default_arr = helper.getMapArray(response.hits.hits[i]._source);
             var specific_arr = [
               'orange_marker.png'
             ];
@@ -272,9 +277,9 @@ var removecheckin = function (){
     $scope.color = $scope.streamStatus.color;
     $scope.freqtext = $scope.streamStatus.freqtext;
     $scope.freqclass = $scope.streamStatus.freqclass;
-
-      $scope.$digest();
-      $scope.$apply();
+      //No need $apply_solve
+      // $scope.$digest();
+      // $scope.$apply();
   }
   function closewindow(){
     var nowTime = new Date().getTime()/1000;

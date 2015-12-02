@@ -56,34 +56,35 @@ app.factory('helper',function(){
   }
 
   function getMapArray(current_hit){
+    console.log(current_hit);
     var arr =
       [
-        current_hit._source.shout,
-        current_hit._source.latitude,
-        current_hit._source.longitude,
+        current_hit.shout,
+        current_hit.latitude,
+        current_hit.longitude,
         1,
-        current_hit._source.category,
-        current_hit._source.url,
-        current_hit._source.photourl,
-        current_hit._source.venue,
-        current_hit._source.username
+        current_hit.category,
+        current_hit.url,
+        current_hit.photourl,
+        current_hit.venue,
+        current_hit.username
       ];
       return arr;
   }
 
   function getStatus(checkinLength){
     var obj = {};
-    if(checkinLength<3){
+    if(checkinLength<1){
         obj.checkinfrequency=checkinLength;
         obj.color = 'rgb(255, 92, 92)';
         obj.freqtext = 'Check-ins are not livestreamed. Search for a city or zoom in the map to see past check-ins';
         obj.freqclass = '';
-   }else if(checkinLength>=3 && checkinLength<10){
+   }else if(checkinLength>=1 && checkinLength<2){
         obj.checkinfrequency=checkinLength;
         obj.color = 'rgb(255, 153, 51)';
         obj.freqtext = 'Check-ins are livestreamed. You can also search for a city or zoom in the map to see past check-ins';
         obj.freqclass = 'active';
-   }else if(checkinLength>=10){
+   }else if(checkinLength>=2){
         obj.checkinfrequency=checkinLength;
         obj.color = 'rgb(51, 204, 51)';
         obj.freqtext = 'Check-ins are livestreamed. You can also search for a city or zoom in the map to see past check-ins';
