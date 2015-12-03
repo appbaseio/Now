@@ -1,0 +1,12 @@
+{
+  "name": "Now",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.8",
+    "appbase-js": "~0.9.0",
+    "bootstrap": "~3.3.6",
+    "font-awesome": "fontawesome#~4.5.0",
+    "jquery": "~2.1.4",
+    "ngmap": "~1.14.16"
+  }
+}

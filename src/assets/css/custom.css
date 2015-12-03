@@ -1,0 +1,41 @@
+html,body{
+	font-size: 14px;
+	font-family: Lato,sans-serif;
+	font-weight: 300;
+	overflow: hidden;
+}
+map{
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 100%;
+	widows: 100%;
+}
+map .gmnoprint{
+	right: 0;
+	left: auto !important;
+}
+#container{
+	position: relative;
+	padding: 0 1rem;
+}
+#header{
+	background: rgba(0,0,0,0.40);
+	color: #fff;
+	padding:2rem;
+}
+#header h1{
+	font-size: 2.5rem;
+	line-height: 2.8rem;
+	margin: 0;
+	padding-bottom: 0.5rem;
+	letter-spacing: 1px;
+}
+#header h3{
+	font-size: 1.5rem;
+	line-height: 1.8rem;
+	margin: 0;
+	color: #ddd;
+	font-weight: 300;
+	letter-spacing: 1px;
+}
