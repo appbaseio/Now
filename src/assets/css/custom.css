@@ -15,13 +15,16 @@ map .gmnoprint{
 	right: 0;
 	left: auto !important;
 }
-#container{
+.container{
 	position: relative;
 	padding: 0 1rem;
 }
-#header{
+#header,
+.city-container{
 	background: rgba(0,0,0,0.40);
 	color: #fff;
+}
+#header{
 	padding:2rem;
 }
 #header h1{
@@ -39,3 +42,96 @@ map .gmnoprint{
 	font-weight: 300;
 	letter-spacing: 1px;
 }
+.footer-container{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 1rem;
+}
+.signal-circle{
+	width: 3rem;
+    height: 3rem;
+    display: inline-block;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.60);
+    border: 3px solid #888;
+    position: absolute;
+    bottom: 0;
+}
+.signal-circle:before{
+	content: " ";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    border: 5px solid #fff;
+}
+.spinner {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: rgba(0,0,0,0.20);
+  border-radius: 100%;  
+}
+.spinner.active{
+  background-color: #333;
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% { -webkit-transform: scale(0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
+}
+.city-container .city-inside{
+	padding: 1rem;
+}
+.input-container{
+	position: relative;
+	padding: 0;
+	font-size: 1.5rem;
+}
+.input-container .input-icon {
+    position: absolute;
+    left: 2px;
+    bottom: 0.75rem;
+}
+.input-container .input-button {
+    position: absolute;
+    right: 0;
+    bottom: 0.5rem;
+    border: 3px solid;
+    color: #fff;
+    border-radius: 1rem;
+    font-size: 1rem;
+    padding: 0.25rem 1rem;
+}
+.input-container input{
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid;
+    padding: 0.5rem 2rem;
+    outline: none !important;
+}
+::-webkit-input-placeholder { color: #fff; } 
+:-moz-placeholder { color: #fff; } 
+::-moz-placeholder { color: #fff; } 
+:-ms-input-placeholder { color: #fff; }

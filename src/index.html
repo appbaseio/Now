@@ -12,37 +12,47 @@
     <!-- Css END -->
   </head>
   <body data-ng-controller="viewcontroller" data-ng-init="init()">
-   
     <!-- Map Start -->
     <map on-zoom_changed="draggedmap()" on-dragend="draggedmap()" styles="[{featureType:'administrative',elementType:'all',stylers:[{visibility:'off'}]},{featureType:'landscape',elementType:'all',stylers:[{visibility:'simplified'},{hue:'#0066ff'},{saturation:'74'},{lightness:'100'}]},{featureType:'poi',elementType:'all',stylers:[{visibility:'simplified'}]},{featureType:'road',elementType:'all',stylers:[{visibility:'simplified'}]},{featureType:'road.highway',elementType:'all',stylers:[{visibility:'off'},{weight:0.6},{saturation:-85},{lightness:61}]},{featureType:'road.highway',elementType:'geometry',stylers:[{visibility:'on'}]},{featureType:'road.arterial',elementType:'all',stylers:[{visibility:'off'}]},{featureType:'road.local',elementType:'all',stylers:[{visibility:'on'}]},{featureType:'transit',elementType:'all',stylers:[{visibility:'simplified'}]},{featureType:'water',elementType:'all',stylers:[{visibility:'simplified'},{color:'#5f94ff'},{lightness:26},{gamma:5.86}]}]">
       <marker ng-repeat="place in places" id="mark" title="{{place[0]}}" icon="{{place[9]}}" position="{{place[1]}}, {{place[2]}}" z-index="{{place[3]}}" on-click="opencheckin(event,place[5])" on-mouseover="showwindow(event,place,true)"></marker>
     </map>
     <!-- Map End -->
-
-    <div class="fluid-container" id="container">
-      <!-- Header Start -->
+    <!-- Header Start -->
+    <div class="fluid-container">
       <div class="row">
         <div class="col-xs-12" id="header">
-          <h1>
-            Browse Foursquare checkins in realtime
-          </h1>
-          <h3 class="subheader">
-            Zoom in the map or type the city name in search box
-          </h3>
+          <h1>Browse Foursquare checkins in realtime</h1>
+          <h3 class="subheader">Zoom in the map or type the city name in search box</h3>
         </div>
       </div>
-      <!-- Header End -->
-
-       <!-- Footer Start -->
-      <div class="row">
-        <div class="col-xs-12" id="header">
-         
-        </div>
-      </div>
-      <!-- Footer End -->
-
     </div>
+    <!-- Header End -->
+    <!-- Footer Start -->
+    <div class="fluid-container container footer-container">
+      <div class="row" id="footer">
+        <div class="col-xs-12">
+          <a href="javascript:void(0);" class="signal-circle"
+            ng-model="checkinfrequency" 
+            style="background-color:{{color}}"
+            data-toggle="popover"
+            title="Livestream {{freqclass}}"
+            data-content={{freqtext}}>
+            <div class="spinner {{freqclass}}"></div>
+          </a>
 
+          <div class="pull-right city-container col-xs-6 col-sm-4">
+            <div class="row city-inside">
+              <div class="input-container col-xs-12">
+                <i class="fa fa-search input-icon"></i>
+                <input type="text" class="input col-xs-12" placeholder="Search City" />
+                <a href="javascript:void(0);" class="input-button"> Plot it </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
     <!-- JS START -->
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=weather,visualization,panoramio"></script>
