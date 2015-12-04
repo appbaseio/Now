@@ -110,7 +110,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
               categoryarray[current_hit._source.category] = true;
               var default_arr = helper.getMapArray(current_hit._source);
               var specific_arr = [
-                'red_marker.png',
+                'src/red_marker.png',
                 current_date
               ];
               var arr = default_arr.concat(specific_arr);
@@ -153,7 +153,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
    if(response._source.latitude!=null && response._source.longitude!=null){
     var default_arr = helper.getMapArray(response._source);
     var specific_arr = [
-      'blue_marker.png',
+      'src/blue_marker.png',
       response._source.city,
       current_date 
     ];
@@ -200,7 +200,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
              continue;
             var default_arr = helper.getMapArray(response.hits.hits[i]._source);
             var specific_arr = [
-              'orange_marker.png'
+              'src/orange_marker.png'
             ];
             var arr = default_arr.concat(specific_arr);
 
@@ -256,7 +256,7 @@ var removecheckin = function (){
   var nowTime = new Date().getTime()/1000;
   if(streamedCheckin.length!=0){
     if(citysearched==streamedCheckin[0][10]){
-      streamedCheckin[0][9] = 'red_marker.png';
+      streamedCheckin[0][9] = 'src/red_marker.png';
       searchedCheckinarray.push(streamedCheckin[0]);
       categoryarray[streamedCheckin[0][4]] = true;
       $scope.subjects = createJson(categoryarray,Object.keys(categoryarray));
