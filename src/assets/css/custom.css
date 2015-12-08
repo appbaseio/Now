@@ -23,6 +23,11 @@ map .gmnoprint{
 .city-container{
 	background: rgba(0,0,0,0.40);
 	color: #fff;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  -webkit-transition: height 0.4s ease, margin 0.4s ease;
+  -moz-transition: height 0.4s ease, margin 0.4s ease;
+  -o-transition: height 0.4s ease, margin 0.4s ease;
+  transition: height 0.4s ease, margin 0.4s ease;
 }
 #header{
 	padding:2rem;
@@ -41,6 +46,9 @@ map .gmnoprint{
 	color: #ddd;
 	font-weight: 300;
 	letter-spacing: 1px;
+}
+#header-input-container{
+  height: 20%;
 }
 .footer-container{
 	position: absolute;
@@ -110,19 +118,21 @@ map .gmnoprint{
 	font-size: 1.5rem;
 }
 .input-container .input-icon {
-    position: absolute;
-    left: 2px;
+    position: relative;
     bottom: 0.75rem;
+    top: 10px;
+    right: 15px;
 }
 .input-container .input-button {
-    position: absolute;
+    position: relative;
     right: 0;
     bottom: 0.5rem;
     border: 3px solid;
     color: #fff;
     border-radius: 1rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding: 0.25rem 1rem;
+    top: 4px;
 }
 .input-container input{
     background: transparent;
@@ -130,6 +140,7 @@ map .gmnoprint{
     border-bottom: 2px solid;
     padding: 0.5rem 2rem;
     outline: none !important;
+    position: relative;
 }
 ::-webkit-input-placeholder { color: #fff; } 
 :-moz-placeholder { color: #fff; } 
