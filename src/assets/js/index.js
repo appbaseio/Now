@@ -72,6 +72,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
               });
           }else{
               $scope.suggestions = null;
+              $scope.categoriesbox = false;
               $scope.row = false;
               $scope.inputcontainerHeight = { 'height': "5rem" };
           }
