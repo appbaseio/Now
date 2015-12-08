@@ -31,6 +31,7 @@
     <div class="fluid-container container footer-container">
       <div class="row" id="footer">
         <div class="col-xs-12">
+
           <a href="javascript:void(0);" class="signal-circle"
             ng-model="checkinfrequency" 
             style="background-color:{{color}}"
@@ -40,15 +41,36 @@
             <div class="spinner {{freqclass}}"></div>
           </a>
 
-          <div class="pull-right city-container col-xs-6 col-sm-4">
+          <div class="row pull-right city-container col-xs-6 col-sm-4" ng-style="inputcontainerHeight">
+            
             <div class="row city-inside">
               <div class="input-container col-xs-12">
-                <i class="fa fa-search input-icon"></i>
-                <input type="text" class="input col-xs-12" placeholder="Search City" />
-                <a href="javascript:void(0);" class="input-button"> Plot it </a>
+                <i class="fa fa-search input-icon col-xs-1"></i>
+                <input type="text" class="input col-xs-8" placeholder="Search City" ng-model="searchtext" ng-keyup="searchquerry()"/>
+                <a href="javascript:void(0);" class="input-button col-xs-3" ng-click="getData()"> Plot it </a>
               </div>
             </div>
-          </div>
+
+            <div class="row" id="city-suggest" ng-show="row">
+              <div ng-repeat="x in suggestions" id="suggestion-list" ng-click="changesearchtext(x.text)">
+                {{ x.text }}
+              </div>
+            </div>
+
+            <div class="row" id="rowcatcontainer" ng-show="categoriesbox">
+              <div class="scrollbar" id="style-1">
+                <div class="force-overflow">
+                  <div id="catlist" ng-repeat="sub in subjects">
+                    <input type="checkbox" ng-click="sub.value = (sub.value==true ? false : true);showcategory(sub.name);"  ng-model="sub.value">
+                    <span id="catlabel" ng-click="sub.value = (sub.value==true ? false : true);showcategory(sub.name);">
+                      {{sub.name}}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          </div>        
         </div>
       </div>
     </div>
