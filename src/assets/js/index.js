@@ -26,6 +26,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
       $scope.checkinfrequency = "Count";
       $scope.freqtext = "";
       $scope.freqclass = "";
+      $scope.inputcontainerHeight = { 'height': "5rem" };
       //No need $apply_solve
       //$scope.$apply();
   };
@@ -57,11 +58,13 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
        try{
           //searchtext variable referred to the text in the search box
           if($scope.searchtext!=null && $scope.searchtext.replace(/\s/g,'').length){  //to check if search text is null
+              $scope.inputcontainerHeight = { 'height': "25rem" };
               var suggestClient = dataClient.getSuggestions($scope.searchtext);
               suggestClient.on('data',function (resp) {
                 //$apply_solve
                 $timeout(function(){
                   $scope.row = true;
+                  $scope.categoriesbox = false;
                   $scope.suggestions = resp.suggest.mysuggester[0].options;
                 },0);
               }).on('error',function (err) {
@@ -70,6 +73,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
           }else{
               $scope.suggestions = null;
               $scope.row = false;
+              $scope.inputcontainerHeight = { 'height': "5rem" };
           }
       }catch(e){
           console.log('error in try'+e);
