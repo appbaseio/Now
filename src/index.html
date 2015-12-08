@@ -53,7 +53,7 @@
 
             <div class="row" id="city-suggest" ng-show="row">
               <div ng-repeat="x in suggestions" id="suggestion-list" ng-click="changesearchtext(x.text)">
-                {{ x.text }}
+                <span data-ng-bind="x.text"></span>
               </div>
             </div>
 
@@ -63,7 +63,7 @@
                   <div id="catlist" ng-repeat="sub in subjects">
                     <input type="checkbox" ng-click="sub.value = (sub.value==true ? false : true);showcategory(sub.name);"  ng-model="sub.value">
                     <span id="catlabel" ng-click="sub.value = (sub.value==true ? false : true);showcategory(sub.name);">
-                      {{sub.name}}
+                      <span data-ng-bind="sub.name"></span>
                     </span>
                   </div>
                 </div>
