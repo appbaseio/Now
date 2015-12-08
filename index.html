@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-ng-app="myApp">
   <head>
-    <title>Check Ins</title>
+    <title>Now : A RealTime Application</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Css START -->
@@ -28,16 +28,16 @@
     </div>
     <!-- Header End -->
     <!-- Footer Start -->
-    <div class="fluid-container container footer-container">
-      <div class="row" id="footer">
-        <div class="col-xs-12">
+    <div class="">
+      <div class="" id="footer">
+        <div class="">
 
           <a href="javascript:void(0);" class="signal-circle"
             ng-model="checkinfrequency" 
             style="background-color:{{color}}"
             data-toggle="popover"
-            title="Livestream {{freqclass}}"
-            data-content={{freqtext}}>
+            title="Livestream"
+            data-content="<span class='btn btn-danger'></span> : waiting for new checkin streams<br><span class='btn btn-warning'></span> & <span class='btn btn-success'></span> : active and streaming new checkins.<br>">
             <div class="spinner {{freqclass}}"></div>
           </a>
 
@@ -90,6 +90,9 @@
     <script src="src/bower_components/ngmap/build/scripts/ng-map.js"></script>
     <script src="src/bower_components/appbase-js/browser/appbase.js"></script>
     <script src="src/bower_components/elasticsearch/elasticsearch.angular.js"></script>
+    <script src="src/bower_components/jquery/dist/jquery.js"></script>
+    <script src="src/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="src/bower_components/appbase-js/browser/appbase.js"></script>
     <script src="src/assets/js/index.js"></script>
     <script src="src/assets/js/data-controller.js"></script>
     <script src="src/assets/js/helperFactory.js"></script>

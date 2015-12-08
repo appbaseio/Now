@@ -30,6 +30,16 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
       $scope.freqtext = "";
       $scope.freqclass = "";
       $scope.inputcontainerHeight = { 'height': "5rem" };
+      $('[data-toggle="popover"]').popover({
+        placement:'left',
+        html:true
+      });
+      $('[data-toggle="popover"]').mouseover(function() {
+            $(this).popover('show');
+        });
+        $('[data-toggle="popover"]').mouseleave(function() {
+            $(this).popover('hide');
+      });
       //No need $apply_solve
       //$scope.$apply();
   };

@@ -57,6 +57,11 @@ map .gmnoprint{
 	width: 100%;
 	padding: 1rem;
 }
+.city-container{
+  position: absolute;
+  bottom: 15px;
+  right: 25px;
+}
 .signal-circle{
 	width: 3rem;
     height: 3rem;
@@ -65,7 +70,8 @@ map .gmnoprint{
     background: rgba(0,0,0,0.60);
     border: 3px solid #888;
     position: absolute;
-    bottom: 0;
+    top: 15px;
+    right: 10px;
 }
 .signal-circle:before{
 	content: " ";
