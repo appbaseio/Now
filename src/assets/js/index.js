@@ -16,7 +16,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
       infowindow = new google.maps.InfoWindow();      //variable for map infowindow
   
   $scope.activeContainer = '';
- 
+  
 
   $scope.init = function(){
       $scope.$on('mapInitialized', function(event, map) {
@@ -125,7 +125,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
               categoryarray[current_hit._source.category] = true;
               var default_arr = helper.getMapArray(current_hit._source);
               var specific_arr = [
-                'assets/img/red_marker.png',
+                'src/assets/img/red_marker.png',
                 current_date
               ];
               var arr = default_arr.concat(specific_arr);
@@ -168,7 +168,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
    if(response._source.latitude!=null && response._source.longitude!=null){
     var default_arr = helper.getMapArray(response._source);
     var specific_arr = [
-      'assets/img/blue_marker.png',
+      'src/assets/img/blue_marker.png',
       response._source.city,
       current_date 
     ];
@@ -215,7 +215,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
              continue;
             var default_arr = helper.getMapArray(response.hits.hits[i]._source);
             var specific_arr = [
-              'assets/img/orange_marker.png'
+              'src/assets/img/orange_marker.png'
             ];
             var arr = default_arr.concat(specific_arr);
 
@@ -271,7 +271,7 @@ var removecheckin = function (){
   var nowTime = new Date().getTime()/1000;
   if(streamedCheckin.length!=0){
     if(citysearched==streamedCheckin[0][10]){
-      streamedCheckin[0][9] = 'assets/img/red_marker.png';
+      streamedCheckin[0][9] = 'src/assets/img/red_marker.png';
       searchedCheckinarray.push(streamedCheckin[0]);
       categoryarray[streamedCheckin[0][4]] = true;
       $scope.subjects = createJson(categoryarray,Object.keys(categoryarray));
