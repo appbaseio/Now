@@ -41,30 +41,39 @@
             <div class="spinner {{freqclass}}"></div>
           </a>
 
-          <div class="row pull-right city-container col-xs-6 col-sm-4" ng-style="inputcontainerHeight">
-            
+          <div class="row pull-right city-container col-xs-6 col-sm-4 {{activeContainer}}">
+            <a href="javascript:void(0)" class="expand-icon" 
+            data-ng-click="activeContainer = (activeContainer == 'active' ? '' : 'active')">
+              <i data-ng-class="{'fa fa-chevron-up':(activeContainer == ''), 'fa fa-chevron-down':(activeContainer == 'active')}"></i>
+            </a>  
             <div class="row city-inside">
               <div class="input-container col-xs-12">
-                <i class="fa fa-search input-icon col-xs-1"></i>
-                <input type="text" class="input col-xs-8" placeholder="Search City" ng-model="searchtext" ng-keyup="searchquerry()"/>
-                <a href="javascript:void(0);" class="input-button col-xs-3" ng-click="getData()"> Plot it </a>
+                <i class="fa fa-search input-icon"></i>
+                <input type="text" class="input col-xs-12" placeholder="Search City" ng-model="searchtext"
+                 ng-keyup="searchquerry()"/>
+                <a href="javascript:void(0);" class="input-button" ng-click="getData()"> Plot it </a>
               </div>
             </div>
 
-            <div class="row" id="city-suggest" ng-show="row">
-              <div ng-repeat="x in suggestions" id="suggestion-list" ng-click="changesearchtext(x.text)">
-                <span data-ng-bind="x.text"></span>
+            <div class="col-xs-12 padding0 city-box" id="city-suggest" ng-show="row">
+              <div ng-repeat="x in suggestions" id="suggestion-list" ng-click="changesearchtext(x.text)"
+               class="suggestion_list city-link">
+                <a href="javascript:void(0);" class="city-point" data-ng-bind="x.text"></a>
               </div>
             </div>
 
             <div class="row" id="rowcatcontainer" ng-show="categoriesbox">
-              <div class="scrollbar" id="style-1">
-                <div class="force-overflow">
-                  <div id="catlist" ng-repeat="sub in subjects">
-                    <input type="checkbox" ng-click="sub.value = (sub.value==true ? false : true);showcategory(sub.name);"  ng-model="sub.value">
-                    <span id="catlabel" ng-click="sub.value = (sub.value==true ? false : true);showcategory(sub.name);">
-                      <span data-ng-bind="sub.name"></span>
-                    </span>
+              <div class="scrollbar col-xs-12" id="style-1">
+                <div class="force-overflow col-xs-12 cat-box">
+                  <div id="catlist" class="" ng-repeat="sub in subjects">
+                    <div class="checkbox cat-label">
+                      <label>
+                        <input type="checkbox" 
+                          ng-change="changeCategory(sub)"  
+                          ng-model="sub.value">
+                        <span data-ng-bind="sub.name"></span>
+                      </label>
+                    </div>
                   </div>
                 </div>
               </div>

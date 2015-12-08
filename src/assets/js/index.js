@@ -14,6 +14,9 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
       current_date = new Date().getTime()/1000;
       geocoder = new google.maps.Geocoder(),           //variable for geocoding
       infowindow = new google.maps.InfoWindow();      //variable for map infowindow
+  
+  $scope.activeContainer = '';
+ 
 
   $scope.init = function(){
       $scope.$on('mapInitialized', function(event, map) {
@@ -34,6 +37,13 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
   $scope.opencheckin = function(event,details){
    $window.open('https://'+details,'_blank');
   };
+
+  $scope.changeCategory = function(sub){
+    //sub.value = (sub.value==true ? false : true);
+    $timeout(function(){
+      $scope.showcategory(sub.name);
+    },300);
+  }
 
   $scope.showwindow = function(e,data,visible){
     for(var i=0;i<infowindowarray.length;i++){
@@ -58,7 +68,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
        try{
           //searchtext variable referred to the text in the search box
           if($scope.searchtext!=null && $scope.searchtext.replace(/\s/g,'').length){  //to check if search text is null
-              $scope.inputcontainerHeight = { 'height': "25rem" };
+              $scope.activeContainer = 'active';
               var suggestClient = dataClient.getSuggestions($scope.searchtext);
               suggestClient.on('data',function (resp) {
                 //$apply_solve
@@ -74,7 +84,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
               $scope.suggestions = null;
               $scope.categoriesbox = false;
               $scope.row = false;
-              $scope.inputcontainerHeight = { 'height': "5rem" };
+              $scope.activeContainer = '';
           }
       }catch(e){
           console.log('error in try'+e);

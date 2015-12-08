@@ -118,13 +118,13 @@ map .gmnoprint{
 	font-size: 1.5rem;
 }
 .input-container .input-icon {
-    position: relative;
+    position: absolute;
     bottom: 0.75rem;
-    top: 10px;
-    right: 15px;
+    top: 12px;
+    left:2px;
 }
 .input-container .input-button {
-    position: relative;
+    position: absolute;
     right: 0;
     bottom: 0.5rem;
     border: 3px solid;
@@ -142,7 +142,89 @@ map .gmnoprint{
     outline: none !important;
     position: relative;
 }
+.city-box{
+  margin-top: -15px;
+  border: 1px solid;
+  border-top: 0;
+}
+.city-box>.city-link>.city-point{
+  display: block;
+  color: inherit;
+  font-size: 1rem;
+  line-height: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid;
+  cursor:pointer;
+}
+.city-box>.city-link>.city-point:hover,
+.cat-box .cat-label:hover{
+  text-decoration: none;
+  background: rgba(0,0,0,0.20);
+}
+.cat-box {
+    padding: 0;
+    border: 1px solid rgba(200,200,200,0.5);
+    max-height: 320px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.cat-box .cat-label{
+    margin: 0;
+    padding: 0.5rem;
+    border-bottom: 1px solid rgba(200,200,200,0.5);
+}
+.cat-box .cat-label label{
+  display: block;
+}
+.padding0{
+  padding: 0 !important;
+}
+.city-container{
+  height: 75px;
+}
+.city-container.active{
+  height: 405px;
+}
+.expand-icon{
+  position: absolute;
+  top: -25px;
+  right: 0;
+  padding: 5px;
+  width: 25px;
+  height: 25px;
+  background: rgba(0,0,0,0.75);
+  color: inherit;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.expand-icon:hover, 
+.expand-icon:focus,
+.expand-icon:active{
+  color: #fff;
+  text-decoration: none;
+}
 ::-webkit-input-placeholder { color: #fff; } 
 :-moz-placeholder { color: #fff; } 
 ::-moz-placeholder { color: #fff; } 
 :-ms-input-placeholder { color: #fff; }
+::-webkit-scrollbar {
+    width: 8px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(200,200,200,0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(200,200,200,0.4); 
+}
