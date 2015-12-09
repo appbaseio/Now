@@ -26,6 +26,11 @@ map{
 	position: relative;
 	padding: 0 1rem;
 }*/
+.zoomSet{
+  top:127px;
+  left:10px;
+  position:fixed
+}
 #header,
 .city-container{
 	background: rgba(0,0,0,0.40);

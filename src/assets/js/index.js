@@ -42,11 +42,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
       });
       $timeout(function(){
         var topHeight = $('#header').outerHeight() + 15;  
-        $('div[title="Zoom in"]').parents('.gmnoprint').css({
-          'top':topHeight,
-          'left':10,
-          'position':'fixed'
-      });  
+        $('div[title="Zoom in"]').parents('.gmnoprint').addClass('zoomSet');  
       },3000);
   };
 
