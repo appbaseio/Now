@@ -11,10 +11,10 @@ map{
 	height: 100%;
 	widows: 100%;
 }
-/*map .gmnoprint{
-	right: 0;
-	left: auto !important;
-}*/
+map .gmnoprint{
+  position: fixed !important;
+  top:127px !important;
+}
 .container{
 	position: relative;
 	padding: 0 1rem;
