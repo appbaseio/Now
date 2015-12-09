@@ -40,8 +40,10 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
         $('[data-toggle="popover"]').mouseleave(function() {
             $(this).popover('hide');
       });
-      //No need $apply_solve
-      //$scope.$apply();
+      $timeout(function(){
+        var topHeight = $('#header').outerHeight() + 15;  
+        $('div[title="Zoom in"]').parents('.gmnoprint').addClass('zoomSet');  
+      },3000);
   };
 
   $scope.opencheckin = function(event,details){

@@ -77,17 +77,17 @@ app.factory('helper',function(){
     if(checkinLength<1){
         obj.checkinfrequency=checkinLength;
         obj.color = 'rgb(255, 92, 92)';
-        obj.freqtext = 'Check-ins are not livestreamed. Search for a city or zoom in the map to see past check-ins';
+        obj.freqtext = "<span class='btn btn-danger'></span> : waiting for new checkin streams.";
         obj.freqclass = '';
    }else if(checkinLength>=1 && checkinLength<2){
         obj.checkinfrequency=checkinLength;
         obj.color = 'rgb(255, 153, 51)';
-        obj.freqtext = 'Check-ins are livestreamed. You can also search for a city or zoom in the map to see past check-ins';
+        obj.freqtext = "<span class='btn btn-warning'></span> & <span class='btn btn-success'></span> : active and streaming new checkins";
         obj.freqclass = 'active';
    }else if(checkinLength>=2){
         obj.checkinfrequency=checkinLength;
         obj.color = 'rgb(51, 204, 51)';
-        obj.freqtext = 'Check-ins are livestreamed. You can also search for a city or zoom in the map to see past check-ins';
+        obj.freqtext = "<span class='btn btn-warning'></span> & <span class='btn btn-success'></span> : active and streaming new checkins";
         obj.freqclass = 'active';
    }
    return obj;
