@@ -41,8 +41,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
             $(this).popover('hide');
       });
       $timeout(function(){
-        var topHeight = $('#header').outerHeight() + 15;
-        $('div[title="Zoom in"]').parents('.gmnoprint').addClass('zoomSet');
+        $('div[title="Zoom in"]').closest('.gmnoprint').closest('.gmnoprint').addClass('zoomSet');
       },3000);
   };
 
