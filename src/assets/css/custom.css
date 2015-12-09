@@ -11,14 +11,21 @@ map{
 	height: 100%;
 	widows: 100%;
 }
-map .gmnoprint{
+/*map .gmnoprint{
   position: fixed !important;
   top:127px !important;
-}
+}*/
+ /*.gmnoprint > .gmnoprint div[title="Zoom in"] { 
+  top: 2px !important; 
+  left: 2px !important; 
+  width: 38px !important;
+   height: 31px !important; 
+ }
+ .gmnoprint > .gmnoprint div[title="Zoom out"] { top: 35px !important; left: 2px !important; width: 38px !important; height: 30px !important; }
 .container{
 	position: relative;
 	padding: 0 1rem;
-}
+}*/
 #header,
 .city-container{
 	background: rgba(0,0,0,0.40);
@@ -70,8 +77,8 @@ map .gmnoprint{
     background: rgba(0,0,0,0.60);
     border: 3px solid #888;
     position: absolute;
-    top: 15px;
-    right: 10px;
+    bottom: 15px;
+    left: 10px;
 }
 .signal-circle:before{
 	content: " ";

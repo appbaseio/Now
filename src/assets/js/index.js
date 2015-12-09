@@ -41,8 +41,12 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
             $(this).popover('hide');
       });
       $timeout(function(){
-        var topHeight = $('#header').outerHeight();  
-        $('.gmnoprint').css('top',topHeight+'px !important');  
+        var topHeight = $('#header').outerHeight() + 15;  
+        $('div[title="Zoom in"]').parents('.gmnoprint').css({
+          'top':topHeight,
+          'left':10,
+          'position':'fixed'
+      });  
       },3000);
   };
 
