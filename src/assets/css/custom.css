@@ -27,9 +27,9 @@ map{
 	padding: 0 1rem;
 }*/
 .zoomSet{
-  top:127px;
-  left:10px;
-  position:fixed
+  top:137px !important;
+  left:10px !important;
+  position:fixed !important;
 }
 #header,
 .city-container{
