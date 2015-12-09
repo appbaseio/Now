@@ -36,8 +36,7 @@
             ng-model="checkinfrequency" 
             style="background-color:{{color}}"
             data-toggle="popover"
-            title="Livestream"
-            data-content="<span class='btn btn-danger'></span> : waiting for new checkin streams<br><span class='btn btn-warning'></span> & <span class='btn btn-success'></span> : active and streaming new checkins.<br>">
+            data-content="{{freqtext || ''}}">
             <div class="spinner {{freqclass}}"></div>
           </a>
 
