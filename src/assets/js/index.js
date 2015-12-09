@@ -14,14 +14,14 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
       current_date = new Date().getTime()/1000;
       geocoder = new google.maps.Geocoder(),           //variable for geocoding
       infowindow = new google.maps.InfoWindow();      //variable for map infowindow
-  
+
   $scope.activeContainer = '';
-  
+
 
   $scope.init = function(){
       $scope.$on('mapInitialized', function(event, map) {
         $scope.mapobj = map;
-        $scope.mapobj.setZoom(2);
+        $scope.mapobj.setZoom(3);
         $scope.mapobj.setOptions({ minZoom: 2, maxZoom: 15 });
         $scope.mapobj.setCenter({lat: 0, lng: 0});
       });
@@ -41,8 +41,8 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
             $(this).popover('hide');
       });
       $timeout(function(){
-        var topHeight = $('#header').outerHeight() + 15;  
-        $('div[title="Zoom in"]').parents('.gmnoprint').addClass('zoomSet');  
+        var topHeight = $('#header').outerHeight() + 15;
+        $('div[title="Zoom in"]').parents('.gmnoprint').addClass('zoomSet');
       },3000);
   };
 
@@ -182,20 +182,20 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
     var specific_arr = [
       'src/assets/img/blue_marker.png',
       response._source.city,
-      current_date 
+      current_date
     ];
     var arr = default_arr.concat(specific_arr);
-    
+
      streamedCheckin.push(arr);
      renderarray.push(arr);
      $scope.places = renderarray;
-     
+
       $scope.streamStatus = helper.getStatus(streamedCheckin.length);
       $scope.checkinfrequency = $scope.streamStatus.checkinfrequency;
       $scope.color = $scope.streamStatus.color;
       $scope.freqtext = $scope.streamStatus.freqtext;
       $scope.freqclass = $scope.streamStatus.freqclass;
-    
+
      $scope.$apply();
    }
  }
