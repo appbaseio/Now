@@ -31,7 +31,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
       $scope.freqclass = "";
       $scope.inputcontainerHeight = { 'height': "5rem" };
       $('[data-toggle="popover"]').popover({
-        placement:'left',
+        placement:'right',
         html:true
       });
       $('[data-toggle="popover"]').mouseover(function() {
