@@ -52,7 +52,7 @@ app.factory('helper',function(){
                center = new google.maps.LatLng(data[1]+0.0012,data[2]-0.00027);
                break;
       }
-    return center;  
+    return center;
   }
 
   function getMapArray(current_hit){
@@ -77,17 +77,17 @@ app.factory('helper',function(){
     if(checkinLength<1){
         obj.checkinfrequency=checkinLength;
         obj.color = 'rgb(255, 92, 92)';
-        obj.freqtext = "<span class='btn btn-danger'></span> : waiting for new checkin streams.";
+        obj.freqtext = "waiting for new checkin streams.";
         obj.freqclass = '';
    }else if(checkinLength>=1 && checkinLength<2){
         obj.checkinfrequency=checkinLength;
         obj.color = 'rgb(255, 153, 51)';
-        obj.freqtext = "<span class='btn btn-warning'></span> & <span class='btn btn-success'></span> : active and streaming new checkins";
+        obj.freqtext = "active and streaming new checkins";
         obj.freqclass = 'active';
    }else if(checkinLength>=2){
         obj.checkinfrequency=checkinLength;
         obj.color = 'rgb(51, 204, 51)';
-        obj.freqtext = "<span class='btn btn-warning'></span> & <span class='btn btn-success'></span> : active and streaming new checkins";
+        obj.freqtext = "active and streaming new checkins";
         obj.freqclass = 'active';
    }
    return obj;
