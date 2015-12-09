@@ -208,7 +208,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
        }).on('error', function(err) {
          console.log("caught a stream error", err);
        });
-     }else if($scope.mapobj.getZoom()==4){
+     }else if($scope.mapobj.getZoom()>=4){
        draggedCheckin = [];
        renderarray = [];
        if(places!=null) renderarray.push.apply(renderarray,places);
