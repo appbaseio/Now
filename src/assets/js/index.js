@@ -179,7 +179,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
    if(response._source.latitude!=null && response._source.longitude!=null){
     var default_arr = helper.getMapArray(response._source);
     var specific_arr = [
-      'src/assets/img/blue_marker.png',
+      'src/assets/img/green_marker.png',
       response._source.city,
       current_date
     ];
@@ -226,7 +226,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
              continue;
             var default_arr = helper.getMapArray(response.hits.hits[i]._source);
             var specific_arr = [
-              'src/assets/img/orange_marker.png'
+              'src/assets/img/yellow_marker.png'
             ];
             var arr = default_arr.concat(specific_arr);
 
