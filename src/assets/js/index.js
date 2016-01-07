@@ -64,7 +64,7 @@ myApp.controller('viewcontroller',function ($scope, dataClient, esFactory, $inte
     }
    if(visible){
       infowindow = new google.maps.InfoWindow();
-      infowindow.setContent('<table id="infowindow"><tr><td>' + '<img src="'+ data[6] +'">' + '</td>' + '<td>' + '<b>'+ data[8] + ' says ' +'</b>' + data[0] + '<br><b>Place : </b>' + data[7] + '<br><tr><a href="https://'+data[5]+'"'+'target="'+'_blank'+'">Visit this CheckIn</a></tr></td></tr>'+'</table>');
+      infowindow.setContent('<table id="infowindow"><tr><td>' + '<img src="'+ data[6] +'">' + '</td>' + '<td>' + ' <b>'+ data[8] + ' says ' +'</b>' + data[0] + '<br> <b>Place</b> ' + data[7] + '<br><tr><a href="https://'+data[5]+'"'+'target="'+'_blank'+'">Visit this Checkin</a></tr></td></tr>'+'</table>');
       var center = helper.getCenter($scope.mapobj.getZoom(), data);
       infowindow.setPosition(center);
       infowindow.setZIndex(2);
