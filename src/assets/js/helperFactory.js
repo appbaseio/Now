@@ -75,7 +75,7 @@ app.factory('helper', function() {
     if (checkinLength < 1) {
       obj.checkinfrequency = checkinLength;
       obj.color = 'rgb(255, 92, 92)';
-      obj.freqtext = "waiting for new checkin streams.";
+      obj.freqtext = "waiting for new checkin streams";
       obj.freqclass = '';
     } else if (checkinLength >= 1 && checkinLength < 2) {
       obj.checkinfrequency = checkinLength;
