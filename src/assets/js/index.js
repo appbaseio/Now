@@ -82,7 +82,7 @@ myApp.controller('viewcontroller', function($scope, dataClient, $interval, $wind
     }
   };
 
-  $scope.searchquerry = function() {
+  $scope.searchquery = function() {
     try {
       //searchtext variable referred to the text in the search box
       if ($scope.searchtext != null && $scope.searchtext.replace(/\s/g, '').length) { //to check if search text is null
