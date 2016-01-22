@@ -82,7 +82,7 @@ myApp.controller('viewcontroller', function($scope, dataClient, $interval, $wind
     }
   };
 
-  $scope.searchquerry = function() {
+  $scope.searchquery = function() {
     try {
       //searchtext variable referred to the text in the search box
       if ($scope.searchtext != null && $scope.searchtext.replace(/\s/g, '').length) { //to check if search text is null
@@ -180,7 +180,7 @@ myApp.controller('viewcontroller', function($scope, dataClient, $interval, $wind
     }
   }
 
-  var realtimeClient = dataClient.getliveData();
+  var realtimeClient = dataClient.getLiveData();
   realtimeClient.on('data', function(res) {
     streamProcess(res); //to fetch the data and to mark it on map
   }).on('error', function(err) {
