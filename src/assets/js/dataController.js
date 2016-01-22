@@ -9,13 +9,13 @@ app.service('dataClient', function() {
     password: 'b614d8fa-03d8-4005-b6f1-f2ff31cd0f91'
   });
 
-  this.getSuggestions = function(text) {
+  this.getSuggestions = function(city_prefix) {
     return appbaseRef.search({
       index: 'checkin',
       body: {
         suggest: {
           mysuggester: {
-            text: text,
+            text: city_prefix,
             completion: {
               field: 'city_suggest'
             }
@@ -25,21 +25,21 @@ app.service('dataClient', function() {
     });
   }
 
-  this.getSearchCheckin = function(text) {
+  this.getSearchCheckin = function(city_name) {
     return appbaseRef.search({
       index: 'checkin',
       type: 'city',
       body: {
         query: {
           match: {
-            city: text
+            city: city_name
           }
         }
       }
     });
   }
 
-  this.getliveData = function() {
+  this.getLiveData = function() {
     return appbaseRef.searchStream({
       type: 'city',
       body: {
