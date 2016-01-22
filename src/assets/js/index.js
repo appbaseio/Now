@@ -180,7 +180,7 @@ myApp.controller('viewcontroller', function($scope, dataClient, $interval, $wind
     }
   }
 
-  var realtimeClient = dataClient.getliveData();
+  var realtimeClient = dataClient.getLiveData();
   realtimeClient.on('data', function(res) {
     streamProcess(res); //to fetch the data and to mark it on map
   }).on('error', function(err) {
